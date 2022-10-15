@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Silverlight.Infrastructure\Silverlight.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
 </Project>
