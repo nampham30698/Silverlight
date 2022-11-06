@@ -16,13 +16,15 @@ namespace Silverlight.Web.Autofac
             builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
             {
                 builder.RegisterAssemblyTypes(typeof(ICategoryService).Assembly)
-                .Where(x => x.Name.EndsWith("Service"))
+                .Where(x => x.Namespace == "Silverlight.ApplicationCore.Interfaces" ||
+                            x.Namespace == "Silverlight.ApplicationCore.Services")
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope()
                 .PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
 
                 builder.RegisterAssemblyTypes(typeof(ICategoryService).Assembly)
-                    .Where(x => x.Name.EndsWith("Service"))
+                    .Where(x => x.Namespace == "Silverlight.ApplicationCore.Interfaces" ||
+                                x.Namespace == "Silverlight.ApplicationCore.Services")
                     .AsSelf()
                     .InstancePerLifetimeScope()
                     .PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);

@@ -26,9 +26,5 @@ namespace Silverlight.ApplicationCore.Services
         {
             await _categoryRepository.DeleteAsync(category);
         }
-        public string Hola()
-        {
-            return "Nam Pham";
-        }
     }
 }
