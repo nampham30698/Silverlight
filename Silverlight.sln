@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silverlight.Web", "src\Silverlight.Web\Silverlight.Web.csproj", "{99ECB1EB-AEB5-4E6C-9613-1BE0200CC1E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silverlight.Web", "src\Silverlight.Web\Silverlight.Web.csproj", "{99ECB1EB-AEB5-4E6C-9613-1BE0200CC1E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silverlight.ApplicationCore", "src\Silverlight.ApplicationCore\Silverlight.ApplicationCore.csproj", "{B6FAB961-DF47-4A41-86AC-889E1D5DDBF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silverlight.ApplicationCore", "src\Silverlight.ApplicationCore\Silverlight.ApplicationCore.csproj", "{B6FAB961-DF47-4A41-86AC-889E1D5DDBF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silverlight.Infrastructure", "src\Silverlight.Infrastructure\Silverlight.Infrastructure.csproj", "{D5D92BA5-AC9A-4179-8398-DD78D6E2CECD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silverlight.Infrastructure", "src\Silverlight.Infrastructure\Silverlight.Infrastructure.csproj", "{D5D92BA5-AC9A-4179-8398-DD78D6E2CECD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

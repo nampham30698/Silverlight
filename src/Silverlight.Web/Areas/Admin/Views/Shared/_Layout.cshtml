@@ -1,0 +1,121 @@
+﻿@{
+    var currentYear = DateTime.Now.Year;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Silverlight.Web</title>
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
+
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+              asp-fallback-href="~/font-awesome/css/all.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/admin/site.min.css" asp-append-version="true" />
+    </environment>
+
+    <environment names="Development,Docker">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link href="~/font-awesome/css/all.min.css" rel="stylesheet" />
+        <!-- Google Font: Source Sans Pro -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link href="~/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+        <link href="~/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css" rel="stylesheet" />
+        <link href="~/adminlte/plugins/jqvmap/jqvmap.min.css" rel="stylesheet" />
+        <link href="~/adminlte/dist/css/adminlte.min.css" rel="stylesheet" />
+        <link href="~/adminlte/plugins/overlayscrollbars/css/overlayscrollbars.min.css" rel="stylesheet" />
+        <link href="~/adminlte/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+
+        <link href="~/css/admin/style.css" rel="stylesheet" />
+    </environment>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="~/adminlte/dist/img/adminltelogo.png" alt="AdminLTELogo" height="60" width="60">
+        </div>
+
+        <partial name="_NavbarPartial" />
+
+        <partial name="_SidebarPartial" />
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">&copy; @currentYear - Silverlight</a>
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 1.0.0
+            </div>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <environment names="Development,Docker">
+        <script src="~/adminlte/plugins/jquery/jquery.min.js"></script>
+        @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+        <script src="~/adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
+        <script src="~/font-awesome/js/all.min.js"></script>
+        <script type="text/javascript">
+            $.widget.bridge('uibutton', $.ui.button)
+        </script>
+        <script src="~/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+        <script src="~/adminlte/plugins/sparklines/sparkline.js"></script>
+        <script src="~/adminlte/plugins/jqvmap/jquery.vmap.min.js"></script>
+        <script src="~/adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+        <script src="~/adminlte/plugins/jquery-knob/jquery.knob.min.js"></script>
+        <script src="~/adminlte/plugins/moment/moment.min.js"></script>
+        <script src="~/adminlte/plugins/daterangepicker/daterangepicker.js"></script>
+        <script src="~/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+        <script src="~/adminlte/plugins/overlayscrollbars/js/jquery.overlayscrollbars.min.js"></script>
+        <script src="~/lib/ckeditor/build/ckeditor.js"></script>
+        <script src="~/adminlte/dist/js/adminlte.min.js"></script>
+        <script src="~/adminlte/dist/js/demo.js"></script>
+        @*<script src="~/adminlte/dist/js/pages/dashboard.js"></script>*@
+
+        <script src="~/js/admin/site.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+                asp-fallback-src="~/font-awesome/js/all.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+
+        <script src="~/js/admin/site.min.js" asp-append-version="true"></script>
+    </environment>
+</body>
+</html>

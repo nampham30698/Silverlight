@@ -7,49 +7,96 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Silverlight.Web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Silverlight.Web.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Silverlight</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <title>@ViewData["Title"] - NamPham|ThaoChi</title>
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
+    
+    <environment names="Staging,Production">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+              asp-fallback-href="~/font-awesome/css/all.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/frontend/style.min.css" asp-append-version="true" />
+    </environment>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; @currentYear - Silverlight - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <environment names="Development,Docker">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link href="~/font-awesome/css/all.min.css" rel="stylesheet" />
+        <link href="~/themefe/fonts/iconic/css/material-design-iconic-font.min.css" rel="stylesheet" />
+        <link href="~/themefe/fonts/linearicons-v1.0.0/icon-font.min.css" rel="stylesheet" />
+        <link href="~/themefe/vendor/animate/animate.css" rel="stylesheet" />
+        <link href="~/themefe/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" />
+        <link href="~/themefe/vendor/animsition/css/animsition.min.css" rel="stylesheet" />
+        <link href="~/themefe/vendor/select2/select2.min.css" rel="stylesheet" />
+        <link href="~/themefe/vendor/daterangepicker/daterangepicker.css" rel="stylesheet" />
+        <link href="~/themefe/vendor/slick/slick.css" rel="stylesheet" />
+        <link href="~/themefe/vendor/magnificpopup/magnific-popup.css" rel="stylesheet" />
+        <link href="~/themefe/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" />
+        <link href="~/themefe/css/util.css" rel="stylesheet" />
+        <link href="~/themefe/css/main.css" rel="stylesheet" />
+
+        <link rel="stylesheet" href="~/css/frontend/style.css" asp-append-version="true" />
+    </environment>
+</head>
+<body class="animsition">
+    <partial name="_HeaderPartial" />
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+    <partial name="_FooterPartial" />
+
+    <!-- Back to top -->
+    <div class="btn-back-to-top" id="btn-back-to-top-fe">
+        <span class="symbol-btn-back-to-top">
+            <i class="zmdi zmdi-chevron-up"></i>
+        </span>
+    </div>
+    
+    <environment names="Development,Docker">
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/font-awesome/js/all.min.js"></script>
+        <script src="~/themefe/vendor/animsition/js/animsition.min.js"></script>
+        <script src="~/themefe/vendor/bootstrap/js/popper.min.js"></script>
+        <script src="~/themefe/vendor/select2/select2.min.js"></script>
+        <script src="~/themefe/vendor/daterangepicker/moment.min.js"></script>
+        <script src="~/themefe/vendor/daterangepicker/daterangepicker.js"></script>
+        <script src="~/themefe/vendor/slick/slick.min.js"></script>
+        <script src="~/themefe/js/slick-custom.js"></script>
+        <script src="~/themefe/vendor/parallax100/parallax100.js"></script>
+        <script src="~/themefe/vendor/magnificpopup/jquery.magnific-popup.min.js"></script>
+        <script src="~/themefe/vendor/isotope/isotope.pkgd.min.js"></script>
+        <script src="~/themefe/vendor/sweetalert/sweetalert.min.js"></script>
+        <script src="~/themefe/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        
+        <script src="~/themefe/js/main.js"></script>
+
+        <script src="~/js/frontend/site.js" asp-append-version="true"></script>
+        <script type="text/javascript">
+            if('@ViewData["Title"]' != 'Home'){
+                $('body > header').addClass("header-v4");
+                $('.container-menu-desktop').addClass("how-shadow1");
+            }
+        </script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+                asp-fallback-src="~/font-awesome/js/all.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/fontend/site.min.js" asp-append-version="true"></script>
+    </environment>
 </body>
 </html>
-
-

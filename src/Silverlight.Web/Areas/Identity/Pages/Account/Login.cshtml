@@ -1,0 +1,84 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<style>
+    .wrapper {
+        margin-top: 50%;
+    }
+
+    .form-signin {
+        max-width: 500px;
+        padding: 40px;
+        margin: 0 auto;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 5px;
+    }
+    .form-check-label{
+        cursor: pointer;
+    }
+
+    .eye-icon{
+        position: absolute;
+        top: 7px;
+        right: 10px;
+        color: #6c757d;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <section class="wrapper">
+            <form method="post" class="form-signin">
+                <div class="mb-3 text-center">
+                    <a href="/">
+                        <img src="~/themefe/images/icons/logo-01.png" />
+                    </a>
+                </div>
+                <div class="mb-3 text-danger text-center">
+                    @Html.ValidationMessage("LoginFailed")
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Input.Email" class="fw-bolder"></label>
+                    <input asp-for="Input.Email" class="form-control"/>
+                    <span asp-validation-for="Input.Email" class="text-danger d-block mt-1"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Input.Password" class="fw-bolder"></label>
+                    <div style="position: relative" id="show_hide_password">
+                        <input asp-for="Input.Password" class="form-control" />
+                        <a href="javascript:;" class="eye-icon">
+                            <i class="fa-regular fa-eye-slash"></i>
+                        </a>
+                    </div>
+                    <span asp-validation-for="Input.Password" class="text-danger d-block mt-1"></span>
+                </div>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input asp-for="Input.RememberMe" class="form-check-input" />
+                        <label class="form-check-label" asp-for="Input.RememberMe">
+                            Remember me?
+                        </label>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="bg1 bor1 btn cl0 size-103">Log in</button>
+                </div>
+                @*<div class="form-group">
+                    <p>
+                        <a asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
+                </div>*@
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/frontend/identity/login.js"></script>
+}

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Silverlight.ApplicationCore.Interfaces;
 using Silverlight.Web.Models;
 using System.Diagnostics;
 
@@ -6,11 +8,15 @@ namespace Silverlight.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IAppLogger<HomeController> _appLogger;
+        private readonly ICategoryService _categoryService;
+        private readonly ITokenClaimsService _tokenClaimsService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IAppLogger<HomeController> appLogger, ICategoryService categoryService, ITokenClaimsService tokenClaimsService)
         {
-            _logger = logger;
+            _appLogger = appLogger;
+            _categoryService = categoryService;
+            _tokenClaimsService = tokenClaimsService;
         }
 
         public IActionResult Index()
@@ -27,6 +33,11 @@ namespace Silverlight.Web.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public async Task<string> Hola()
+        {
+            return await _tokenClaimsService.GetTokenAsync("nampham@gmail.com");
         }
     }
 }
