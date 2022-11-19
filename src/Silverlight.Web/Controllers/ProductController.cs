@@ -5,8 +5,8 @@ namespace Silverlight.Web.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IAppLogger<HomeController> _appLogger;
-        public ProductController(IAppLogger<HomeController> appLogger)
+        private readonly IAppLogger<ProductController> _appLogger;
+        public ProductController(IAppLogger<ProductController> appLogger)
         {
             _appLogger = appLogger;
         }

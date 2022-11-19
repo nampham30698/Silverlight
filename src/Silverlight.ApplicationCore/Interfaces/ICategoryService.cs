@@ -12,7 +12,5 @@ namespace Silverlight.ApplicationCore.Interfaces
         Task CreateCategoryAsync(Category category);
         Task UpdateCategoryAsync(Category category);
         Task DeleteCategoryAsync(Category category);
-
-        string Hola();
     }
 }

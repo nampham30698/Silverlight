@@ -43,12 +43,12 @@
                     @Html.ValidationMessage("LoginFailed")
                 </div>
                 <div class="mb-3">
-                    <label asp-for="Input.Email" class="fw-bolder"></label>
+                    <label asp-for="Input.Email"></label>
                     <input asp-for="Input.Email" class="form-control"/>
                     <span asp-validation-for="Input.Email" class="text-danger d-block mt-1"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="Input.Password" class="fw-bolder"></label>
+                    <label asp-for="Input.Password"></label>
                     <div style="position: relative" id="show_hide_password">
                         <input asp-for="Input.Password" class="form-control" />
                         <a href="javascript:;" class="eye-icon">

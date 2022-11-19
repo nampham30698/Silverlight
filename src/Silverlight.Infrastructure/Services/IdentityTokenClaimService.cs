@@ -2,11 +2,12 @@
 using Microsoft.IdentityModel.Tokens;
 using Silverlight.ApplicationCore.Constants;
 using Silverlight.ApplicationCore.Interfaces;
+using Silverlight.Infrastructure.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Silverlight.Infrastructure.Identity
+namespace Silverlight.Infrastructure.Services
 {
     public class IdentityTokenClaimService : ITokenClaimsService
     {

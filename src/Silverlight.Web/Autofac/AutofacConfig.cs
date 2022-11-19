@@ -10,8 +10,6 @@ namespace Silverlight.Web.Autofac
         {
             builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
-            var a = typeof(ICategoryService).Assembly;
-
             // Call ConfigureContainer on the Host sub property 
             builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
             {

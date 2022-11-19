@@ -1,4 +1,20 @@
-﻿<!-- Header -->
+﻿@{
+    string key = ViewData["Title"] as string ?? string.Empty;
+    var dicActive = new Dictionary<string, string>()
+    {
+        { Constants.HomeNav.Home, string.Empty },
+        { Constants.HomeNav.Product, string.Empty },
+        { Constants.HomeNav.Blog, string.Empty },
+        { Constants.HomeNav.About, string.Empty },
+        { Constants.HomeNav.Contact, string.Empty },
+    };
+
+    if(dicActive.ContainsKey(key)){
+        dicActive[key] = "active-menu";
+    };
+}
+
+<!-- Header -->
 <header>
     <!-- Header desktop -->
     <div class="container-menu-desktop">
@@ -10,7 +26,7 @@
                         @Context.User.Identity.Name
                     }
                     else{
-                        <span>Xin Chào !</span>
+                        <span>Welcome to our website</span>
                     }
                 </div>
 
@@ -48,11 +64,11 @@
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
-                        <li class="active-menu">
+                        <li class="@dicActive[Constants.HomeNav.Home]">
                             <a href="/">Home</a>
                         </li>
 
-                        <li>
+                        <li class="@dicActive[Constants.HomeNav.Product]">
                             <a href="~/Product">Shop</a>
                         </li>
 
@@ -60,16 +76,16 @@
                             <a href="shoping-cart.html">Features</a>
                         </li>
 
-                        <li>
-                            <a href="blog.html">Blog</a>
+                        <li class="@dicActive[Constants.HomeNav.Blog]">
+                            <a href="~/Blog">Blog</a>
                         </li>
 
-                        <li>
-                            <a href="about.html">About</a>
+                        <li class="@dicActive[Constants.HomeNav.About]">
+                            <a href="~/About">About</a>
                         </li>
 
-                        <li>
-                            <a href="contact.html">Contact</a>
+                        <li class="@dicActive[Constants.HomeNav.Contact]">
+                            <a href="~/Contact">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -128,7 +144,12 @@
         <ul class="topbar-mobile">
             <li>
                 <div class="left-top-bar">
-                    @Context.User.Identity.Name
+                    @if(Context.User.Identity.IsAuthenticated){
+                        @Context.User.Identity.Name
+                    }
+                    else{
+                        <span>Welcome to our website</span>
+                    }
                 </div>
             </li>
 
@@ -157,36 +178,28 @@
         </ul>
 
         <ul class="main-menu-m">
-            <li>
-                <a href="index.html">Home</a>
-                <ul class="sub-menu-m">
-                    <li><a href="index.html">Homepage 1</a></li>
-                    <li><a href="home-02.html">Homepage 2</a></li>
-                    <li><a href="home-03.html">Homepage 3</a></li>
-                </ul>
-                <span class="arrow-main-menu-m">
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </span>
+            <li class="@dicActive[Constants.HomeNav.Home]">
+                <a href="/">Home</a>
             </li>
 
-            <li>
-                <a href="product.html">Shop</a>
+            <li class="@dicActive[Constants.HomeNav.Product]">
+                <a href="~/Product">Shop</a>
             </li>
 
-            <li>
-                <a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+            <li class="label1" data-label1="hot">
+                <a href="shoping-cart.html">Features</a>
             </li>
 
-            <li>
-                <a href="blog.html">Blog</a>
+            <li class="@dicActive[Constants.HomeNav.Blog]">
+                <a href="~/Blog">Blog</a>
             </li>
 
-            <li>
-                <a href="about.html">About</a>
+            <li class="@dicActive[Constants.HomeNav.About]">
+                <a href="~/About">About</a>
             </li>
 
-            <li>
-                <a href="contact.html">Contact</a>
+            <li class="@dicActive[Constants.HomeNav.Contact]">
+                <a href="~/Contact">Contact</a>
             </li>
         </ul>
     </div>
