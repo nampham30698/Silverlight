@@ -1,8 +1,4 @@
-﻿@{
-    var currentYear = DateTime.Now.Year;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -46,7 +42,7 @@
 <body class="animsition">
     <partial name="_HeaderPartial" />
 
-    <main role="main" class="pb-3">
+    <main role="main">
         @RenderBody()
     </main>
 
@@ -98,5 +94,7 @@
         </script>
         <script src="~/js/fontend/site.min.js" asp-append-version="true"></script>
     </environment>
+
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,5 +1,6 @@
 ﻿using Silverlight.ApplicationCore.Entities;
 using Silverlight.ApplicationCore.Interfaces;
+using System.Linq;
 
 namespace Silverlight.ApplicationCore.Services
 {
@@ -10,6 +11,11 @@ namespace Silverlight.ApplicationCore.Services
         public CategoryService(IRepository<Category> categoryRepository)
         {
             _categoryRepository = categoryRepository;
+        }
+
+        public async Task<List<Category>> GetAllAsync()
+        {
+            return await _categoryRepository.ListAsync();
         }
 
         public async Task CreateCategoryAsync(Category category)

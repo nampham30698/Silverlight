@@ -11,6 +11,7 @@ namespace Silverlight.Infrastructure.Data
 {
     public class SilverlightDbContext : DbContext
     {
+        #pragma warning disable CS8618 // Required by Entity Framework
         public SilverlightDbContext(DbContextOptions<SilverlightDbContext> options) : base(options)
         {
 
@@ -18,7 +19,7 @@ namespace Silverlight.Infrastructure.Data
 
         // add entity here
 
-        //public DbSet<Users> Users { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

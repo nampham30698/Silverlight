@@ -21,25 +21,38 @@
     </environment>
 
     <environment names="Development,Docker">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
         <link href="~/font-awesome/css/all.min.css" rel="stylesheet" />
         <!-- Google Font: Source Sans Pro -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        @*<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">*@
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <link href="~/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
         <link href="~/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css" rel="stylesheet" />
         <link href="~/adminlte/plugins/jqvmap/jqvmap.min.css" rel="stylesheet" />
-        <link href="~/adminlte/dist/css/adminlte.min.css" rel="stylesheet" />
         <link href="~/adminlte/plugins/overlayscrollbars/css/overlayscrollbars.min.css" rel="stylesheet" />
         <link href="~/adminlte/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
 
+        @*sweet2 alert*@
+        <link href="~/adminlte/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+
+        @*toastr*@
+        <link href="~/adminlte/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+        @*datatable & plugin*@
+        <link rel="stylesheet" href="~/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="~/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+        <link rel="stylesheet" href="~/adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+        @*Theme style*@
+        <link href="~/adminlte/dist/css/adminlte.min.css" rel="stylesheet" />
+
+        @*site style*@
         <link href="~/css/admin/style.css" rel="stylesheet" />
     </environment>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__shake" src="~/adminlte/dist/img/adminltelogo.png" alt="AdminLTELogo" height="60" width="60">
@@ -51,13 +64,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    @RenderBody()
-                </div><!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
+            @RenderBody()
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -76,8 +83,8 @@
     <!-- ./wrapper -->
 
     <environment names="Development,Docker">
-        <script src="~/adminlte/plugins/jquery/jquery.min.js"></script>
-        @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+        @*<script src="~/adminlte/plugins/jquery/jquery.min.js"></script>*@
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
         <script src="~/font-awesome/js/all.min.js"></script>
         <script type="text/javascript">
@@ -92,13 +99,38 @@
         <script src="~/adminlte/plugins/moment/moment.min.js"></script>
         <script src="~/adminlte/plugins/daterangepicker/daterangepicker.js"></script>
         <script src="~/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+        <script src="~/adminlte/plugins/summernote/summernote-bs4.min.js"></script>
         <script src="~/adminlte/plugins/overlayscrollbars/js/jquery.overlayscrollbars.min.js"></script>
+
+        @*sweet2 alert*@
+        <script src="~/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+         @*toastr*@
+        <script src="~/adminlte/plugins/toastr/toastr.min.js"></script>
+
+        @*datatable & plugin*@
+        <script src="~/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="~/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="~/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="~/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+        <script src="~/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="~/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+        <script src="~/adminlte/plugins/jszip/jszip.min.js"></script>
+        <script src="~/adminlte/plugins/pdfmake/pdfmake.min.js"></script>
+        <script src="~/adminlte/plugins/pdfmake/vfs_fonts.js"></script>
+        <script src="~/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+        <script src="~/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+        <script src="~/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
         <script src="~/lib/ckeditor/build/ckeditor.js"></script>
         <script src="~/adminlte/dist/js/adminlte.min.js"></script>
         <script src="~/adminlte/dist/js/demo.js"></script>
         @*<script src="~/adminlte/dist/js/pages/dashboard.js"></script>*@
 
+        <script src="~/js/admin/utils.js"></script>
+        <script src="~/js/admin/errorhandler.js"></script>
         <script src="~/js/admin/site.js" asp-append-version="true"></script>
+        
     </environment>
 
     <environment names="Staging,Production">
@@ -117,5 +149,7 @@
 
         <script src="~/js/admin/site.min.js" asp-append-version="true"></script>
     </environment>
+
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

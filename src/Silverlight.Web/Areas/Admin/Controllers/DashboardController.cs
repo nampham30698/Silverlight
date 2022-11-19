@@ -5,7 +5,7 @@ namespace Silverlight.Web.Areas.Admin.Controllers
 {
     [Area("admin")]
     [Authorize]
-    public class DashboardController : Controller
+    public class DashboardController : ControllerBase
     {
         public IActionResult Index()
         {

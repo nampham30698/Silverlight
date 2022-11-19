@@ -4,7 +4,7 @@ namespace Silverlight.Web.Configuration
 {
     public static class ConfigureCookieSettings
     {
-        public const int ValidityMinutesPeriod = 10;
+        public const int ValidityMinutesPeriod = 20;
         public const string IdentifierCookieName = "SilverlightIdentifier";
 
         public static IServiceCollection AddCookieSettings(this IServiceCollection services)
