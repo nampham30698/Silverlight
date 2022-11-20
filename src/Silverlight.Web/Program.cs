@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using NLog;
 using NLog.Web;
+using Silverlight.Infrastructure.Data;
 using Silverlight.Infrastructure.Identity;
 using Silverlight.Web;
 using Silverlight.Web.Autofac;
@@ -90,6 +91,9 @@ try
         var scopedProvider = scope.ServiceProvider;
         try
         {
+            var silverlightDbContext = scopedProvider.GetRequiredService<SilverlightDbContext>();
+            await SilverlightDbContextSeed.SeedAsync(silverlightDbContext);
+
             var userManager = scopedProvider.GetRequiredService<UserManager<ApplicationUser>>();
             var roleManager = scopedProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var identityContext = scopedProvider.GetRequiredService<AppIdentityDbContext>();

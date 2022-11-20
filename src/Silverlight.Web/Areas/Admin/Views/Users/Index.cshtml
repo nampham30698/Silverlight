@@ -8,13 +8,13 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h4 class="m-0">Dashboard</h4>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="~/admin">Home</a></li>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/admin">Dashboard</a></li>
                     <li class="breadcrumb-item active">User</li>
                 </ol>
+            </div>
+             <div class="col-sm-6 text-right">
+                <a asp-area="Admin" asp-controller="Users" asp-action="CreateOrEdit" asp-route-id="0" class="btn btn-sm btn-silverlight"> <i class="fa fa-plus"></i> Add User</a>
             </div>
         </div>
     </div>
@@ -29,7 +29,6 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="input-group mb-3">
-                                    @*<input type="text" class="form-control" placeholder="Enter your search...">*@
                                     @Html.TextBoxFor(x => x.TextSearch, new { @class = "form-control",@placeholder="Nhập từ khóa, ấn Enter để tìm kiếm..." })
                                     <div class="input-group-append">
                                         <button type="button" class="btn btn-silverlight">
@@ -54,21 +53,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var user in Model.Users)
+                                        @foreach (var (user, idx) in Model.Users.WithIndex(1))
                                         {
                                             <tr>
-                                                <td class="text-center sl-dt-idx"></td>
+                                                <td class="text-center tbl-idx">@idx</td>
                                                 <td>@user.UserName</td>
                                                 <td>@user.Email</td>
                                                 <td>@user.PhoneNumber</td>
                                                 <td>@user.Address</td>
-                                                <td class="text-center sl-dt-action">
+                                                <td class="text-center tbl-action">
                                                     <div class="btn-group">
                                                         <button type="button" class="btn btn-silverlight btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                             Thao tác
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="~/admin/user/create-or-edit/@user.Id"><i class="fa fa-edit mr-2"></i> Edit</a>
+                                                            <a class="dropdown-item" asp-area="Admin" asp-controller="Users" asp-action="CreateOrEdit" asp-route-id="@user.Id"><i class="fa fa-edit mr-2"></i> Edit</a>
                                                             <a class="dropdown-item" href="~/admin/user/my-profile"><i class="fa fa-eye mr-2"></i> View Profile</a>
                                                         </div>
                                                     </div>
@@ -79,6 +78,7 @@
                                 </table>
                             </div>
                         </div>
+                        <partial name="_PaginationPartial" model="@Model.Paper"/>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Silverlight.ApplicationCore.Dtos.User;
+using NLog.Filters;
+using Silverlight.ApplicationCore.Dtos;
 using Silverlight.ApplicationCore.Entities;
 using Silverlight.ApplicationCore.Interfaces;
 using Silverlight.Infrastructure.Identity;
@@ -36,7 +37,10 @@ namespace Silverlight.ApplicationCore.Services
                 x.FirstName.ToLower().Contains(filter.TextSearch) ||
                 x.LastName.ToLower().Contains(filter.TextSearch) ||
                 x.Email.ToLower().Contains(filter.TextSearch) ||
-                x.PhoneNumber.ToLower().Contains(filter.TextSearch)).Skip(filter.Skip).Take(filter.Take).ToListAsync();
+                x.PhoneNumber.ToLower().Contains(filter.TextSearch))
+                .Skip(filter.Skip).Take(filter.Take).ToListAsync();
+
+                
 
                 var data = _mapper.Map<List<UserDto>>(users);
 
@@ -49,11 +53,25 @@ namespace Silverlight.ApplicationCore.Services
             }
         }
 
+        public async Task<int> GetTotalCountAsync(UserFilterDto filter)
+        {
+            var total = await _userManager.Users.Where(x => string.IsNullOrEmpty(filter.TextSearch) ||
+                x.FirstName.ToLower().Contains(filter.TextSearch) ||
+                x.LastName.ToLower().Contains(filter.TextSearch) ||
+                x.Email.ToLower().Contains(filter.TextSearch) ||
+                x.PhoneNumber.ToLower().Contains(filter.TextSearch)).CountAsync();
+
+            return total;
+        }
+
         public async Task<UserDto> GetByIdAsync(string id)
         {
             var users = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
-
-            return _mapper.Map<UserDto>(users);
+            if(users != null)
+            {
+                return _mapper.Map<UserDto>(users);
+            }
+            return new UserDto();
         }
 
         public async Task CreateAsync(UserDto userDto)

@@ -1,4 +1,4 @@
-﻿namespace Silverlight.ApplicationCore.Dtos.User
+﻿namespace Silverlight.ApplicationCore.Dtos
 {
     public class UserFilterDto
     {

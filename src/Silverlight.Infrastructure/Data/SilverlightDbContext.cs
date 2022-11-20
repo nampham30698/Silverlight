@@ -20,6 +20,7 @@ namespace Silverlight.Infrastructure.Data
         // add entity here
 
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Settings> Settings { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

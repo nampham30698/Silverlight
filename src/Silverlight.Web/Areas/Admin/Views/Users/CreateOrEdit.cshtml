@@ -1,5 +1,6 @@
-﻿@{
-    
+﻿@model UserViewModel
+
+@{
     string actionName = "Create";
     if (!string.IsNullOrEmpty(Model.Id))
     {
@@ -8,15 +9,13 @@
     ViewData["Title"] = $"{actionName} User";
 }
 
-@model UserViewModel
-
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="~/admin">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="~/admin/user">Users</a></li>
+                    <li class="breadcrumb-item"><a asp-area="admin" asp-controller="" asp-action="">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a asp-area="admin" asp-controller="users" asp-action="">Users</a></li>
                     <li class="breadcrumb-item active">@actionName</li>
                 </ol>
             </div>
@@ -34,44 +33,57 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Firstname</label>
-                                    @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", @placeholder="Enter FirstName..." })
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Lastname</label>
-                                    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", @placeholder="Enter Lastname..." })
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Phone Number</label>
-                                    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", @placeholder="Enter Phone Number..." })
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Image</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">Upload</span>
+                        @using (Html.BeginForm("Users", "CreateOrEdit"))
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @placeholder="Enter FirstName..." })
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Address</label>
-                                    @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @placeholder="Enter Address..." })
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Firstname</label>
+                                        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", @placeholder="Enter FirstName..." })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Lastname</label>
+                                        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", @placeholder="Enter Lastname..." })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Phone Number</label>
+                                        @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", @placeholder="Enter Phone Number..." })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Profile Image</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="exampleInputFile">
+                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Upload</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @placeholder="Enter Address..." })
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
+                        
                     </div>
                 </div>
             </div>

@@ -1,9 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@inject ISettingsService _SettingsService
+@{
+    var websiteName = await _SettingsService.GetValueByKeyAsync(Constants.Settings.WEBSITE_NAME);
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - NamPham|ThaoChi</title>
+    <title>@ViewData["Title"] - @websiteName</title>
     <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
     
     <environment names="Staging,Production">
