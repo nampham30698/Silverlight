@@ -1,4 +1,9 @@
-﻿<!-- Footer -->
+﻿@inject ISettingsService _SettingsService
+@{
+    var setttings = await _SettingsService.GetAllValueAsync();
+}
+
+<!-- Footer -->
 <footer class="bg3 p-t-75 p-b-32">
 	<div class="container">
 		<div class="row">
@@ -72,21 +77,21 @@
 				</h4>
 
 				<p class="stext-107 cl7 size-201">
-					Adress: 210 Bạch Mai, Hai Bà Trưng, Hà Nội
+					Adress: @setttings.Address
 				</p>
 				<p class="stext-107 cl7 size-201">
-					Phone: 0974433534
+					Phone: @setttings.Phone
 				</p>
 				<div class="p-t-27">
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+					<a href="@setttings.Facebook" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
 						<i class="fa-brands fa-facebook-f"></i>
 					</a>
 
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+					<a href="@setttings.Instagram" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
 						<i class="fa-brands fa-square-instagram"></i>
 					</a>
 
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+					<a href="@setttings.Twitter" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
 						<i class="fa-brands fa-twitter"></i>
 					</a>
 				</div>
@@ -136,7 +141,7 @@
 			</div>
 
 			<p class="stext-107 cl6 txt-center">
-				Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by Nam Pham
+				Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by @setttings.WebsiteName
 
 			</p>
 		</div>

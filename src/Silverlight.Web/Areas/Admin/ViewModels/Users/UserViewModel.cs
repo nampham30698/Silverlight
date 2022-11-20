@@ -1,4 +1,4 @@
-﻿using Silverlight.ApplicationCore.Dtos.User;
+﻿using Silverlight.ApplicationCore.Dtos;
 
 namespace Silverlight.Web.Areas.Admin.ViewModels
 {

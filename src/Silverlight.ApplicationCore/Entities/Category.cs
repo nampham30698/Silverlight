@@ -17,5 +17,6 @@ namespace Silverlight.ApplicationCore.Entities
         public bool? IsActive { get; set; }
         public bool? IsDeleted { get; set; }
         public DateTime? DeletionTime { get; set; }
+        public int? Level { get; set; }
     }
 }

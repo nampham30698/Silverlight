@@ -1,5 +1,7 @@
-﻿@{
+﻿@inject ISettingsService _SettingsService
+@{
     var currentYear = DateTime.Now.Year;
+    var websiteName = await _SettingsService.GetValueByKeyAsync(Constants.Settings.WEBSITE_NAME);
 }
 
 <!DOCTYPE html>
@@ -7,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Silverlight.Web</title>
+    <title>@ViewData["Title"] - @websiteName</title>
     <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
 
     <environment names="Staging,Production">

@@ -1,0 +1,37 @@
+﻿@model PaginationPageViewModel
+
+@{
+    var currentController = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+    var currentAction = ViewContext.RouteData.Values["action"].ToString().ToLower();
+
+    int start = 1;
+    int end = 20;
+    if(Model != null){
+        start = Model.PageSize * (Model.PageIndex - 1) + 1;
+        end = Model.PageIndex * Model.PageSize;
+        if (end > Model.TotalCount)
+        {
+            end = Model.TotalCount;
+        }
+        if (Model.TotalCount == 0)
+        {
+            start = 0;
+        }
+    }
+}
+
+@if (Model!= null && Model.TotalCount > 0){
+    <div class="row">
+        <div class="col-sm-12 col-md-5">
+            <div class="dataTables_info custom-tbl-info" id="tbl_info" role="status" aria-live="polite">Showing @start - @end of @Model.TotalCount items</div>
+        </div>
+        <div class="col-sm-12 col-md-7">
+            <div class="dataTables_paginate paging_simple_numbers" id="tbl_paginate">
+                <ul class="pagination custom-pagination">
+                    @Html.Raw(Model.GeneratePage("admin", currentController, currentAction))
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+

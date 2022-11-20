@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Silverlight.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using Silverlight.Infrastructure.Data;
 namespace silverlight.infrastructure.data.migrations
 {
     [DbContext(typeof(SilverlightDbContext))]
-    partial class SilverlightDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221120085720_nampv_insert_table_settings_update_category_20112022_15h56")]
+    partial class nampv_insert_table_settings_update_category_20112022_15h56
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

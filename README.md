@@ -29,3 +29,4 @@
 
 step1: dotnet ef migrations remove -c SilverlightDbContext
 step2: delete file migrations
+step3: update db

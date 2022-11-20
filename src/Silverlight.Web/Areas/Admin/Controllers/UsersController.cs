@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Silverlight.ApplicationCore.Dtos.User;
+using Silverlight.ApplicationCore.Dtos;
 using Silverlight.ApplicationCore.Interfaces;
 using Silverlight.Web.Areas.Admin.ViewModels;
 
@@ -24,13 +24,16 @@ namespace Silverlight.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1, string search = "")
         {
             var vm = new IndexUserViewModel();
             try
             {
-                var users = await _userService.GetAllAsync(new UserFilterDto() { Take = 10 });
+                var users = await _userService.GetAllAsync(new UserFilterDto() { Take = 10});
+                var totalCount = await _userService.GetTotalCountAsync(new UserFilterDto());
 
+                vm.Users = users;
+                vm.Paper = new PaginationPageViewModel(totalCount, page);
                 return View(vm);
             }
             catch (Exception ex)
@@ -54,6 +57,8 @@ namespace Silverlight.Web.Areas.Admin.Controllers
 
                 var users = await _userService.GetAllAsync(filter);
 
+                var totalCount = await _userService.GetTotalCountAsync(filter);
+
                 vm.Users = users;
 
                 return View(vm);
@@ -66,13 +71,22 @@ namespace Silverlight.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [Route("admin/users/create-or-edit/{id}")]
         public async Task<IActionResult> CreateOrEdit(string id)
         {
-            var user = await _userService.GetByIdAsync(id);
+            try
+            {
+                var user = await _userService.GetByIdAsync(id);
 
-            var vm = _mapper.Map<UserViewModel>(user);
+                var vm = _mapper.Map<UserViewModel>(user);
 
-            return View(vm);
+                return View(vm);
+            }
+            catch (Exception ex)
+            {
+                _appLogger.LogError(ex.Message);
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]

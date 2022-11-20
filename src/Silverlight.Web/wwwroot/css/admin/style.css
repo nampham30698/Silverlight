@@ -14,8 +14,12 @@
         background-color: #5966ba;
         border-color: #5966ba;
     }
-
 .dataTable thead tr {
+    background-color: #717fe0;
+    color: white;
+}
+
+.table thead tr {
     background-color: #717fe0;
     color: white;
 }
@@ -27,6 +31,7 @@
 
 .page-link {
     color: #717fe0;
+    cursor: pointer;
 }
 
 .page-item.active .page-link {
@@ -42,11 +47,11 @@
     width: 0;
 }
 
-.sl-dt-idx{
-    width:0.5rem;
+.tbl-idx {
+    width: 0.5rem;
 }
 
-.sl-dt-action {
+.tbl-action {
     width: 8rem;
 }
 
@@ -62,4 +67,13 @@ label:not(.form-check-label):not(.custom-file-label) {
 
 .content-wrapper span.field-validation-error {
     display: none;
+}
+
+.custom-tbl-info {
+    padding-top: 0.85em;
+}
+
+.custom-pagination {
+    justify-content: flex-end;
+    margin-bottom: 0;
 }
