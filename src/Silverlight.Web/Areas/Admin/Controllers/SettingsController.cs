@@ -39,11 +39,11 @@ namespace Silverlight.Web.Areas.Admin.Controllers
         {
             if (vm.IsLogoChange)
             {
-                vm.Logo = Utility.CreateFile(_webHostEnvironment, vm.LogoFormFile, "images/logo");
+                vm.Logo = Utility.CreateFile(_webHostEnvironment, vm.LogoFormFile, "/images/logo");
             }
             if (vm.IsLogoShortChange)
             {
-                vm.LogoShort = Utility.CreateFile(_webHostEnvironment, vm.LogoShortFormFile, "images/logo");
+                vm.LogoShort = Utility.CreateFile(_webHostEnvironment, vm.LogoShortFormFile, "/images/logo");
             }
 
             return await _settingsService.UpdateAllAsync(vm);
