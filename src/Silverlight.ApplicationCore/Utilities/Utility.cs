@@ -20,6 +20,8 @@ namespace Silverlight.ApplicationCore.Utilities
 
                 string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
 
+                string filePathForSaving = string.Format("{0}/{1}", path, uniqueFileName);
+
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
                 if (!Directory.Exists(uploadsFolder))
@@ -32,7 +34,7 @@ namespace Silverlight.ApplicationCore.Utilities
                     file.CopyTo(fileStream);
                 }
 
-                return filePath;
+                return filePathForSaving;
             }
             return string.Empty;
         }

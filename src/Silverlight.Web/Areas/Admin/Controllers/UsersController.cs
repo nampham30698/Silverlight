@@ -100,7 +100,7 @@ namespace Silverlight.Web.Areas.Admin.Controllers
             {
                 if (string.IsNullOrEmpty(vm.Id))
                 {
-                    vm.UrlImage = Utility.CreateFile(_webHostEnvironment, vm.UrlImageFormFile, "images/users");
+                    vm.UrlImage = Utility.CreateFile(_webHostEnvironment, vm.UrlImageFormFile, "/images/users");
 
                     await _userService.CreateAsync(vm);
                 }
