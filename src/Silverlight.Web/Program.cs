@@ -1,4 +1,5 @@
 using Ardalis.ListStartupServices;
+using Autofac.Core;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
@@ -21,6 +22,8 @@ try
 
     // Add services to the container.
     builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+    builder.Services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
 
     // Add Silverlight.Infrastructure Dbconnection
     Silverlight.Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);

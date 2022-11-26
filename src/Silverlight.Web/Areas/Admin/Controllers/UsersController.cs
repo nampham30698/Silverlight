@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Silverlight.ApplicationCore.Dtos;
 using Silverlight.ApplicationCore.Interfaces;
 using Silverlight.Web.Areas.Admin.ViewModels;
+using Silverlight.ApplicationCore.Utilities;
+using Silverlight.ApplicationCore.Services;
 
 namespace Silverlight.Web.Areas.Admin.Controllers
 {
@@ -14,13 +16,16 @@ namespace Silverlight.Web.Areas.Admin.Controllers
         private readonly IAppLogger<UsersController> _appLogger;
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
+        private readonly IWebHostEnvironment _webHostEnvironment;
         public UsersController(IAppLogger<UsersController> appLogger,
                                   IUserService userService,
-                                  IMapper mapper)
+                                  IMapper mapper,
+                                  IWebHostEnvironment webHostEnvironment)
         {
             _appLogger = appLogger;
             _userService = userService;
             _mapper = mapper;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet]
@@ -71,7 +76,6 @@ namespace Silverlight.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        [Route("admin/users/create-or-edit/{id}")]
         public async Task<IActionResult> CreateOrEdit(string id)
         {
             try
@@ -96,6 +100,7 @@ namespace Silverlight.Web.Areas.Admin.Controllers
             {
                 if (string.IsNullOrEmpty(vm.Id))
                 {
+                    vm.UrlImage = Utility.CreateFile(_webHostEnvironment, vm.UrlImageFormFile, "images/users");
                     await _userService.CreateAsync(vm);
                 }
                 else
@@ -109,6 +114,20 @@ namespace Silverlight.Web.Areas.Admin.Controllers
                 _appLogger.LogError(ex.Message);
                 return View(vm);
             }
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            try
+            {
+                await _userService.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                _appLogger.LogError(ex.Message);
+            }
+
+            return RedirectToAction(nameof(this.Index));
         }
     }
 }

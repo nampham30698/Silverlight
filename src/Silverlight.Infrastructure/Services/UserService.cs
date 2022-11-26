@@ -120,5 +120,14 @@ namespace Silverlight.ApplicationCore.Services
                 _appLogger.LogError(ex.Message);
             }
         }
+
+        public async Task Delete(string id)
+        {
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if (user != null)
+            {
+                await _userManager.DeleteAsync(user);
+            }
+        }
     }
 }

@@ -14,5 +14,6 @@ namespace Silverlight.ApplicationCore.Interfaces
         Task<UserDto> GetByIdAsync(string id);
         Task CreateAsync(UserDto userDto);
         Task UpdateAsync(UserDto userDto);
+        Task Delete(string id);
     }
 }

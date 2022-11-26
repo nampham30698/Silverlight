@@ -20,7 +20,7 @@
                 </ol>
             </div>
             <div class="col-sm-6 text-right">
-                <a class="btn btn-sm btn-silverlight"> <i class="fa fa-save"></i> Save</a>
+                <a id="btnSave" class="btn btn-sm btn-silverlight"> <i class="fa fa-save"></i> Save</a>
                 <a class="btn btn-sm btn-default" href="~/admin/users"> <i class="fa fa-reply"></i> Back</a>
             </div>
         </div>
@@ -33,16 +33,29 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        @using (Html.BeginForm("Users", "CreateOrEdit"))
+                        @using (Html.BeginForm("CreateOrEdit", "Users", null, FormMethod.Post, true, new { @id = "userForm",@enctype="multipart/form-data" }))
                         {
+                            @Html.HiddenFor(x => x.Id)
+                            @Html.HiddenFor(x => x.UrlImage)
                             <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group text-center">
+                                        <div >
+                                            <img id="previewImage" class="profile-user-img img-fluid" src="/adminlte/dist/img/user4-128x128.jpg" alt="User profile picture">
+                                        </div>
+                                        <div class="mt-2 upload-btn-wrapper">
+                                            <button class="btn btn-silverlight">Upload a file</button>
+                                            @*<input type="file" asp-for="UrlImageFormFile" onchange="handleFileInputChange(this)" id="UrlImageInputFile">*@
+                                            @Html.TextBoxFor(x => x.UrlImageFormFile, new {@onchange="handleFileInputChange(this)",@type="file"})
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Username</label>
                                         @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @placeholder="Enter FirstName..." })
                                     </div>
                                 </div>
-                                <div class="col-md-6"></div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Firstname</label>
@@ -61,20 +74,6 @@
                                         @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", @placeholder="Enter Phone Number..." })
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Profile Image</label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">Upload</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Address</label>
@@ -90,3 +89,7 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <script src="~/js/admin/user/CreateOrEdit.js"></script>
+}
