@@ -101,10 +101,15 @@ namespace Silverlight.Web.Areas.Admin.Controllers
                 if (string.IsNullOrEmpty(vm.Id))
                 {
                     vm.UrlImage = Utility.CreateFile(_webHostEnvironment, vm.UrlImageFormFile, "images/users");
+
                     await _userService.CreateAsync(vm);
                 }
                 else
                 {
+                    if (vm.IsUrlImageChange)
+                    {
+                        vm.UrlImage = Utility.CreateFile(_webHostEnvironment, vm.UrlImageFormFile, "/images/users");
+                    }
                     await _userService.UpdateAsync(vm);
                 }
                 return RedirectToAction(nameof(this.Index));

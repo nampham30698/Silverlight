@@ -12,6 +12,7 @@ namespace Silverlight.ApplicationCore.Constants
         {
             public const string WEBSITE_NAME = "WEBSITE_NAME";
             public const string LOGO = "LOGO";
+            public const string LOGO_SHORT = "LOGO_SHORT";
             public const string ADDRESS = "ADDRESS";
             public const string PHONE = "PHONE";
             public const string FACEBOOK = "FACEBOOK";

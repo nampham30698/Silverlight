@@ -14,23 +14,27 @@ namespace Silverlight.ApplicationCore.Utilities
     {
         public static string CreateFile(IWebHostEnvironment _webHostEnvironment, IFormFile file,string path)
         {
-            string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, path);
-
-            string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-
-            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-            if (!Directory.Exists(uploadsFolder))
+            if (file != null)
             {
-                Directory.CreateDirectory(uploadsFolder);
-            }
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, path);
 
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
-            {
-                file.CopyTo(fileStream);
-            }
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
 
-            return filePath;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                }
+
+                return filePath;
+            }
+            return string.Empty;
         }
     }
 }

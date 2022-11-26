@@ -27,56 +27,77 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Website name</label>
-                                    @Html.TextBoxFor(x => x.WebsiteName, new { @class = "form-control", @placeholder="Enter website name..." })
+                        @using (Html.BeginForm("Save", "Settings", null, FormMethod.Post, true, new { @id = "settingsForm"}))
+                        {
+                            @Html.HiddenFor(x => x.IsLogoChange)
+                            @Html.HiddenFor(x => x.IsLogoShortChange)
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Website name</label>
+                                        @Html.TextBoxFor(x => x.WebsiteName, new { @class = "form-control", @placeholder="Enter website name..." })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                   <div class="form-group">
+                                        <label>Logo Short</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                @Html.TextBoxFor(x => x.LogoFormFile, new {@onchange="handleFileInputChange(this)",@type="file"})
+                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Upload</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Logo Short</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                @Html.TextBoxFor(x => x.LogoShortFormFile, new {@onchange="handleFileInputChange(this)",@type="file"})
+                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Upload</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Phone</label>
+                                        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @placeholder="Enter phone..." })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @placeholder="Enter address..." })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Facebook</label>
+                                        @Html.TextBoxFor(x => x.Facebook, new { @class = "form-control", @placeholder="Enter link facebook..." })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Instagram</label>
+                                        @Html.TextBoxFor(x => x.Instagram, new { @class = "form-control", @placeholder="Enter link instagram..." })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Twitter</label>
+                                        @Html.TextBoxFor(x => x.Twitter, new { @class = "form-control", @placeholder="Enter link twitter..." })
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Logo</label>
-                                    @Html.TextBoxFor(x => x.Logo, new { @class = "form-control", @placeholder="Enter website name..." })
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Logo Short</label>
-                                    @Html.TextBoxFor(x => x.Logo, new { @class = "form-control", @placeholder="Enter website name..." })
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @placeholder="Enter phone..." })
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Address</label>
-                                    @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @placeholder="Enter address..." })
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Facebook</label>
-                                    @Html.TextBoxFor(x => x.Facebook, new { @class = "form-control", @placeholder="Enter link facebook..." })
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Instagram</label>
-                                    @Html.TextBoxFor(x => x.Instagram, new { @class = "form-control", @placeholder="Enter link instagram..." })
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Twitter</label>
-                                    @Html.TextBoxFor(x => x.Twitter, new { @class = "form-control", @placeholder="Enter link twitter..." })
-                                </div>
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>

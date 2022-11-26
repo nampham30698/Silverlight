@@ -92,6 +92,9 @@ function handleFileInputChange(fileInfo) {
         let fileExtension = fileName.split('.').pop();
 
         if (arrFileExtensionsValid.includes(fileExtension)) {
+
+            $('#IsUrlImageChange').val('True');
+
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#previewImage').attr('src', e.target.result).fadeIn('slow');

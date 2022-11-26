@@ -37,15 +37,15 @@
                         {
                             @Html.HiddenFor(x => x.Id)
                             @Html.HiddenFor(x => x.UrlImage)
+                            @Html.HiddenFor(x => x.IsUrlImageChange)
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group text-center">
                                         <div >
-                                            <img id="previewImage" class="profile-user-img img-fluid" src="/adminlte/dist/img/user4-128x128.jpg" alt="User profile picture">
+                                            <img id="previewImage" class="profile-user-img img-fluid" src="@Model.UrlImage" alt="User profile picture">
                                         </div>
                                         <div class="mt-2 upload-btn-wrapper">
                                             <button class="btn btn-silverlight">Upload a file</button>
-                                            @*<input type="file" asp-for="UrlImageFormFile" onchange="handleFileInputChange(this)" id="UrlImageInputFile">*@
                                             @Html.TextBoxFor(x => x.UrlImageFormFile, new {@onchange="handleFileInputChange(this)",@type="file"})
                                         </div>
                                     </div>

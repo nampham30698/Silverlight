@@ -20,6 +20,7 @@ namespace Silverlight.ApplicationCore.Services
             {
                 WebsiteName = await GetValueByKeyAsync(Constants.Constants.Settings.WEBSITE_NAME),
                 Logo = await GetValueByKeyAsync(Constants.Constants.Settings.LOGO),
+                LogoShort = await GetValueByKeyAsync(Constants.Constants.Settings.LOGO_SHORT),
                 Phone = await GetValueByKeyAsync(Constants.Constants.Settings.PHONE),
                 Address = await GetValueByKeyAsync(Constants.Constants.Settings.ADDRESS),
                 Facebook = await GetValueByKeyAsync(Constants.Constants.Settings.FACEBOOK),
@@ -47,12 +48,13 @@ namespace Silverlight.ApplicationCore.Services
         public async Task<bool> UpdateAllAsync(SettingsDto input)
         {
             await UpdateAsync(new Settings() { Key = Constants.Constants.Settings.WEBSITE_NAME, Value = input.WebsiteName });
-            await UpdateAsync(new Settings() { Key = Constants.Constants.Settings.LOGO, Value = input.WebsiteName });
-            await UpdateAsync(new Settings() { Key = Constants.Constants.Settings.PHONE, Value = input.WebsiteName });
-            await UpdateAsync(new Settings() { Key = Constants.Constants.Settings.ADDRESS, Value = input.WebsiteName });
-            await UpdateAsync(new Settings() { Key = Constants.Constants.Settings.FACEBOOK, Value = input.WebsiteName });
-            await UpdateAsync(new Settings() { Key = Constants.Constants.Settings.INSTAGRAM, Value = input.WebsiteName });
-            await UpdateAsync(new Settings() { Key = Constants.Constants.Settings.TWITTER, Value = input.WebsiteName });
+            await UpdateAsync(new Settings() { Key = Constants.Constants.Settings.LOGO, Value = input.Logo });
+            await UpdateAsync(new Settings() { Key = Constants.Constants.Settings.LOGO_SHORT, Value = input.LogoShort });
+            await UpdateAsync(new Settings() { Key = Constants.Constants.Settings.PHONE, Value = input.Phone });
+            await UpdateAsync(new Settings() { Key = Constants.Constants.Settings.ADDRESS, Value = input.Address });
+            await UpdateAsync(new Settings() { Key = Constants.Constants.Settings.FACEBOOK, Value = input.Facebook });
+            await UpdateAsync(new Settings() { Key = Constants.Constants.Settings.INSTAGRAM, Value = input.Instagram });
+            await UpdateAsync(new Settings() { Key = Constants.Constants.Settings.TWITTER, Value = input.Twitter });
 
             return true;
         }
