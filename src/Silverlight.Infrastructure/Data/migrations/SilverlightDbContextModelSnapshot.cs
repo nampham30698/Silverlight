@@ -22,11 +22,122 @@ namespace silverlight.infrastructure.data.migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.HasSequence("Blog_Category_hilo")
+                .IncrementsBy(10);
+
+            modelBuilder.HasSequence("Blog_hilo")
+                .IncrementsBy(10);
+
             modelBuilder.HasSequence("Categories_hilo")
                 .IncrementsBy(10);
 
             modelBuilder.HasSequence("Settings_hilo")
                 .IncrementsBy(10);
+
+            modelBuilder.Entity("Silverlight.ApplicationCore.Entities.Blog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "Blog_hilo");
+
+                    b.Property<string>("Contents")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CreationDay")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CreationMonth")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreationYear")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatorUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("TitleShort")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("UrlImage")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("Silverlight.ApplicationCore.Entities.Blog_Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "Blog_Category_hilo");
+
+                    b.Property<int?>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatorUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Blogs_Categories");
+                });
+
+            modelBuilder.Entity("Silverlight.ApplicationCore.Entities.Blog_Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "Blog_hilo");
+
+                    b.Property<int?>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatorUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TagName")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("TagNameShort")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Blogs_Tags");
+                });
 
             modelBuilder.Entity("Silverlight.ApplicationCore.Entities.Category", b =>
                 {
@@ -42,8 +153,8 @@ namespace silverlight.infrastructure.data.migrations
                     b.Property<DateTime?>("CreationTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("CreatorUserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("CreatorUserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
@@ -64,6 +175,9 @@ namespace silverlight.infrastructure.data.migrations
                     b.Property<string>("Name")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("NameShort")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Order")
                         .HasColumnType("int");
@@ -87,8 +201,8 @@ namespace silverlight.infrastructure.data.migrations
                     b.Property<DateTime?>("CreationTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("CreatorUserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("CreatorUserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Key")
                         .HasMaxLength(255)

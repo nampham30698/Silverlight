@@ -4,7 +4,7 @@ namespace Silverlight.ApplicationCore.Enums
 {
     public enum CategoryType
     {
-        [Description("Danh mục loại sản phẩm")]
-        FE_TypeOfProducts = 1
+        [Description("Danh mục bài viết")]
+        FE_TypeOfArticle = 1
     }
 }

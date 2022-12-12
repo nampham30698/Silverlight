@@ -66,10 +66,10 @@ namespace Silverlight.ApplicationCore.Services
 
         public async Task<UserDto> GetByIdAsync(string id)
         {
-            var users = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
-            if(users != null)
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if(user != null)
             {
-                return _mapper.Map<UserDto>(users);
+                return _mapper.Map<UserDto>(user);
             }
             return new UserDto();
         }

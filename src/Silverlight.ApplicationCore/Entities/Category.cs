@@ -9,8 +9,9 @@ namespace Silverlight.ApplicationCore.Entities
 {
     public class Category : EntityBase<int>
     {
-        public string? Name { get; set; }
-        public string? Description { get; set; }
+        public string Name { get; set; }
+        public string NameShort { get; set; }
+        public string Description { get; set; }
         public int? Order { get; set; }  
         public int? CategoryType { get; set; }
         public int? ParentId { get; set; }

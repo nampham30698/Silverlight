@@ -9,7 +9,7 @@ namespace Silverlight.ApplicationCore.Entities
     public class EntityBase<TId>
     {
         public TId Id { get; set; }
-        public DateTime? CreationTime { get; set; }
-        public Guid? CreatorUserId { get; set; }
+        public DateTime? CreationTime { get; set; } = DateTime.Now;
+        public string CreatorUserId { get; set; }
     }
 }

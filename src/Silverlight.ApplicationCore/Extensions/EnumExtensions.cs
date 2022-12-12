@@ -10,7 +10,7 @@ namespace Silverlight.ApplicationCore.Extensions
 {
     public static class EnumExtensions
     {
-        public static string GetDescription(this Enum value)
+        public static string GetDescription(Enum value)
         {
             try
             {

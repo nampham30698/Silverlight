@@ -95,3 +95,44 @@ label:not(.form-check-label):not(.custom-file-label) {
         top: 0;
         opacity: 0;
     }
+
+.select2-container--default .select2-results__option--highlighted[aria-selected], .select2-container--default .select2-results__option--highlighted[aria-selected]:hover {
+    background-color: #717fe0;
+}
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary {
+    background: #717fe0;
+}
+
+.jstree-anchor > .jstree-themeicon {
+    margin-right: 5px;
+}
+
+/* Icon coloring */
+.icon-state-default {
+    color: #c6c6c6;
+}
+
+.icon-state-success {
+    color: #45B6AF;
+}
+
+.icon-state-info {
+    color: #89C4F4;
+}
+
+.icon-state-warning {
+    color: #dfba49;
+}
+
+.icon-state-danger {
+    color: #F3565D;
+}
+
+.fa-lg,
+.icon-lg {
+    font-size: 16px !important;
+}
+
+.jstree-default .jstree-search {
+    color: red;
+}

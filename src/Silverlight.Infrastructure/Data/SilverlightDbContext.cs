@@ -21,6 +21,9 @@ namespace Silverlight.Infrastructure.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Settings> Settings { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Blog_Category> Blogs_Categories { get; set; }
+        public DbSet<Blog_Tag> Blogs_Tags { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

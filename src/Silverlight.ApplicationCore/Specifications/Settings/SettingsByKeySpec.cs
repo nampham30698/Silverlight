@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Silverlight.ApplicationCore.Specifications.Settings
+namespace Silverlight.ApplicationCore.Specifications
 {
     public class SettingsByKeySpec : Specification<Entities.Settings>, ISingleResultSpecification
     {

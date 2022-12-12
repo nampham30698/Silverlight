@@ -1,4 +1,5 @@
-﻿using Silverlight.ApplicationCore.Entities;
+﻿using Silverlight.ApplicationCore.Dtos;
+using Silverlight.ApplicationCore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,10 @@ namespace Silverlight.ApplicationCore.Interfaces
 {
     public interface ICategoryService
     {
-        Task CreateCategoryAsync(Category category);
-        Task UpdateCategoryAsync(Category category);
-        Task DeleteCategoryAsync(Category category);
+        Task<string> GetAllForTreeViewAsync(int? categoryType = null);
+        Task<CategoryDto> GetByIdAsync(int id);
+        Task CreateAsync(CategoryDto category);
+        Task UpdateAsync(CategoryDto category);
+        Task DeleteAsync(int id);
     }
 }

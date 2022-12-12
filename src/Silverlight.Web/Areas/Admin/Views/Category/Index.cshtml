@@ -1,0 +1,62 @@
+﻿@model CategoryIndexViewModel
+
+@{
+    ViewData["Title"] = "Category";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="" asp-action="">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Category</li>
+                </ol>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a asp-area="admin" asp-controller="Category" asp-action="CreateOrEdit" class="btn btn-sm btn-silverlight"> <i class="fa fa-plus"></i> Add</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        @using (Html.BeginForm("Index", "Category", FormMethod.Post))
+                        {
+                            <div class="row form-group">
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(x => x.TextSearch, new {@placeholder="Text search ...", @class="form-control"})
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.DropDownListFor(x => x.CategoryType, Model.CategoryTypeDDL, new {@class="form-control select2"})
+                                </div>
+                                <div class="col-md-4">
+                                    <a id="btnSearch" href="javascript:;" class="btn btn-silverlight">
+                                        <i class="fa fa-search"></i> Search
+                                    </a>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="jstree">
+                                    @Html.Raw(@Model.TreeViewDataHtml)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/admin/category/index.js"></script>
+}

@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
+using System.Text.Json;
 using Ardalis.GuardClauses;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -23,24 +25,24 @@ public class LoginModel : PageModel
     }
 
     [BindProperty]
-    public InputModel? Input { get; set; }
+    public InputModel Input { get; set; }
 
-    public IList<AuthenticationScheme>? ExternalLogins { get; set; }
+    public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
-    public string? ReturnUrl { get; set; }
+    public string ReturnUrl { get; set; }
 
     [TempData]
-    public string? ErrorMessage { get; set; }
+    public string ErrorMessage { get; set; }
 
     public class InputModel
     {
         [Required]
         [EmailAddress]
-        public string? Email { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        public string? Password { get; set; }
+        public string Password { get; set; }
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
@@ -53,7 +55,7 @@ public class LoginModel : PageModel
             ModelState.AddModelError(string.Empty, ErrorMessage);
         }
 
-        returnUrl = returnUrl ?? Url.Content("~/");
+        returnUrl ??= Url.Content("~/");
 
         // Clear the existing external cookie to ensure a clean login process
         await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
@@ -65,7 +67,7 @@ public class LoginModel : PageModel
 
     public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
     {
-        returnUrl = returnUrl ?? Url.Content("~/");
+        returnUrl ??= Url.Content("~/");
 
         if (ModelState.IsValid)
         {
@@ -76,7 +78,17 @@ public class LoginModel : PageModel
 
             if (result.Succeeded)
             {
-                _logger.LogInformation("User logged in.");
+                var user = await _signInManager.UserManager.FindByNameAsync(Input.Email);
+
+                var claims = new List<Claim>
+                {
+                    new Claim("UserInfo",JsonSerializer.Serialize(user))
+                };
+                
+                var appIdentity = new ClaimsIdentity(claims);
+
+                HttpContext.User.AddIdentity(appIdentity);
+
                 return LocalRedirect(returnUrl);
             }
             if (result.RequiresTwoFactor)

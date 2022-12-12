@@ -24,7 +24,9 @@
 
     <environment names="Development,Docker">
         @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
-        <link href="~/font-awesome/css/all.min.css" rel="stylesheet" />
+        @*<link href="~/font-awesome/css/all.min.css" rel="stylesheet" />*@
+
+        <link rel="stylesheet" href="~/adminlte/plugins/fontawesome-free/css/all.min.css">
         <!-- Google Font: Source Sans Pro -->
         @*<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">*@
         <!-- Ionicons -->
@@ -34,6 +36,13 @@
         <link href="~/adminlte/plugins/jqvmap/jqvmap.min.css" rel="stylesheet" />
         <link href="~/adminlte/plugins/overlayscrollbars/css/overlayscrollbars.min.css" rel="stylesheet" />
         <link href="~/adminlte/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+
+        @*tree view*@
+        <link href="~/lib/jstree/dist/themes/default/style.min.css" rel="stylesheet" />
+
+        @*select2*@
+        <link rel="stylesheet" href="~/adminlte/plugins/select2/css/select2.min.css">
+        <link rel="stylesheet" href="~/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
         @*sweet2 alert*@
         <link href="~/adminlte/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
@@ -88,7 +97,7 @@
         @*<script src="~/adminlte/plugins/jquery/jquery.min.js"></script>*@
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
-        <script src="~/font-awesome/js/all.min.js"></script>
+        @*<script src="~/font-awesome/js/all.min.js"></script>*@
         <script type="text/javascript">
             $.widget.bridge('uibutton', $.ui.button)
         </script>
@@ -103,8 +112,15 @@
         <script src="~/adminlte/plugins/moment/moment.min.js"></script>
         <script src="~/adminlte/plugins/daterangepicker/daterangepicker.js"></script>
         <script src="~/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+        <script src="~/adminlte/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
         <script src="~/adminlte/plugins/summernote/summernote-bs4.min.js"></script>
         <script src="~/adminlte/plugins/overlayscrollbars/js/jquery.overlayscrollbars.min.js"></script>
+
+        @*tree view*@
+        <script src="~/lib/jstree/dist/jstree.min.js"></script>
+
+        @*select2*@
+        <script src="~/adminlte/plugins/select2/js/select2.full.min.js"></script>
 
         @*sweet2 alert*@
         <script src="~/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>

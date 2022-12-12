@@ -28,6 +28,14 @@
         right: 10px;
         color: #6c757d;
     }
+
+    a:hover {
+        color: #717fe0
+    }
+
+    .mr-1{
+        margin-right: 0.25rem!important;
+    }
 </style>
 
 <div class="row">
@@ -43,14 +51,14 @@
                     @Html.ValidationMessage("LoginFailed")
                 </div>
                 <div class="mb-3">
-                    <label asp-for="Input.Email"></label>
-                    <input asp-for="Input.Email" class="form-control"/>
+                    <label asp-for="Input.Email" class="mb-1 mr-1"></label><span class="text-danger">*</span>
+                    <input asp-for="Input.Email" class="form-control" placeholder="Enter your email ..."/>
                     <span asp-validation-for="Input.Email" class="text-danger d-block mt-1"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="Input.Password"></label>
+                    <label asp-for="Input.Password" class="mb-1 mr-1"></label><span class="text-danger">*</span>
                     <div style="position: relative" id="show_hide_password">
-                        <input asp-for="Input.Password" class="form-control" />
+                        <input asp-for="Input.Password" class="form-control" placeholder="********"/>
                         <a href="javascript:;" class="eye-icon">
                             <i class="fa-regular fa-eye-slash"></i>
                         </a>

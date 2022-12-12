@@ -1,0 +1,86 @@
+﻿@model CategoryViewModel
+
+@{
+    string actionName = "Create";
+    if (Model.Id > 0)
+    {
+        actionName = "Edit";
+    }
+    ViewData["Title"] = $"{actionName} Category";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-area="admin" asp-controller="" asp-action="">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a asp-area="admin" asp-controller="Category" asp-action="">Categories</a></li>
+                    <li class="breadcrumb-item active">@actionName</li>
+                </ol>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a id="btnSave" class="btn btn-sm btn-silverlight"> <i class="fa fa-save"></i> Save</a>
+                <a class="btn btn-sm btn-default" href="~/admin/users"> <i class="fa fa-reply"></i> Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        @using (Html.BeginForm("CreateOrEdit", "Category", null, FormMethod.Post, true, new { @id = "categoryForm"}))
+                        {
+                            @Html.HiddenFor(x => x.Id)
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Category type</label><span class="text-danger ml-1">*</span>
+                                    @Html.DropDownListFor(x => x.CategoryType, Model.CategoryTypeDDL, "Choose one...", new {@class="form-control select2"})
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Name</label><span class="text-danger ml-1">*</span>
+                                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder="Enter category name..." })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Short name</label><span class="text-danger ml-1">*</span>
+                                        @Html.TextBoxFor(x => x.NameShort, new { @class = "form-control"})
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        @Html.TextBoxFor(x => x.Description, new { @class = "form-control", @placeholder="Enter Description..." })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Order</label>
+                                        @Html.TextBoxFor(x => x.Order, new { @class = "form-control allow-numeric-without-decimal", @placeholder="Enter order...", @type="number"})
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="mr-2">Active</label>
+                                        @Html.TextBoxFor(x => x.IsActive, new { @class = "bootstrap-switch", @type="checkbox", @checked="checked"})
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/admin/category/CreateOrEdit.js"></script>
+}

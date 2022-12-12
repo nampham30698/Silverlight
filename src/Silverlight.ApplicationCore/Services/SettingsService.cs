@@ -1,7 +1,7 @@
 ﻿using Silverlight.ApplicationCore.Dtos;
 using Silverlight.ApplicationCore.Entities;
 using Silverlight.ApplicationCore.Interfaces;
-using Silverlight.ApplicationCore.Specifications.Settings;
+using Silverlight.ApplicationCore.Specifications;
 
 namespace Silverlight.ApplicationCore.Services
 {
